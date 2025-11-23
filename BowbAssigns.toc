@@ -1,0 +1,33 @@
+## Interface: 50502
+## Title: BowbAssigns
+## Notes: A modular WoW addon for assignments
+## Author: Bowbee
+## Version: 1.0.0
+## SavedVariables: BowbAssignsDB
+## OptionalDeps: LibStub, LibDataBroker-1.1, LibDBIcon-1.0, Ace3
+
+# Core Files
+Core\Namespace.lua
+Core\Constants.lua
+Core\RaidData.lua
+
+# Utilities
+Utils\TableUtils.lua
+Utils\StringUtils.lua
+
+# Managers
+Managers\ConfigManager.lua
+Managers\EventManager.lua
+Managers\DataParser.lua
+Managers\AssignmentManager.lua
+Managers\MacroManager.lua
+Managers\MinimapManager.lua
+
+# UI Components
+UI\ImportModal.lua
+UI\MainFrame.lua
+UI\BossSelector.lua
+
+# Initialization
+Init.lua
+

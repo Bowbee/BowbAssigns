@@ -1,0 +1,63 @@
+name: Release to CurseForge
+
+on:
+  push:
+    tags:
+      - 'v*' # Triggers on version tags like v1.0.0, v1.1.0, etc.
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Extract version from tag
+        id: version
+        run: |
+          VERSION=${GITHUB_REF#refs/tags/v}
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "Version: $VERSION"
+
+      - name: Update TOC version
+        run: |
+          VERSION=${{ steps.version.outputs.version }}
+          # Update TOC file with the new version
+          sed -i "s/## Version: .*/## Version: $VERSION/" Bowbassigns.toc
+
+      - name: Create addon package
+        run: |
+          # Create a clean directory structure for the addon
+          mkdir -p release/BowbAssigns
+          
+          # Copy addon files (exclude git files, IDE files, etc.)
+          rsync -av --exclude='.git' \
+                    --exclude='.github' \
+                    --exclude='.gitignore' \
+                    --exclude='*.md' \
+                    --exclude='UI/MainFrame_New.lua' \
+                    ./ release/BowbAssigns/
+          
+          # Create zip file
+          cd release
+          zip -r ../BowbAssigns-${{ steps.version.outputs.version }}.zip BowbAssigns/
+
+      - name: Upload to CurseForge
+        uses: itsmeow/curseforge-upload@v3
+        with:
+          token: ${{ secrets.CURSEFORGE_TOKEN }}
+          project_id: ${{ secrets.CURSEFORGE_PROJECT_ID }}
+          file_path: BowbAssigns-${{ steps.version.outputs.version }}.zip
+          changelog: |
+            Release ${{ steps.version.outputs.version }}
+            
+            Changes in this release:
+            - See commit history for detailed changes
+          changelog_type: markdown
+          game_endpoint: wow
+          game_versions: |
+            5.5.0
+          release_type: release
+
