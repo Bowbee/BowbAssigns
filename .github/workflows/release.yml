@@ -25,7 +25,7 @@ jobs:
         run: |
           VERSION=${{ steps.version.outputs.version }}
           # Update TOC file with the new version
-          sed -i "s/## Version: .*/## Version: $VERSION/" Bowbassigns.toc
+          sed -i "s/## Version: .*/## Version: $VERSION/" BowbAssigns.toc
 
       - name: Create addon package
         run: |

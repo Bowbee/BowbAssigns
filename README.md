@@ -4,7 +4,7 @@ A comprehensive raid assignment manager for World of Warcraft (Mists of Pandaria
 
 ## Installation
 
-1. Copy the `Bowbassigns` folder to your WoW addons directory:
+1. Copy the `BowbAssigns` folder to your WoW addons directory:
    - Retail: `World of Warcraft\_retail_\Interface\AddOns\`
    - Classic: `World of Warcraft\_classic_\Interface\AddOns\`
 
@@ -82,7 +82,7 @@ Main initialization file that bootstraps the addon and sets up event handlers.
 ### Adding a New Manager
 
 1. Create a new file in `Managers/` (e.g., `MyManager.lua`)
-2. Add it to `Bowbassigns.toc`
+2. Add it to `BowbAssigns.toc`
 3. Follow the existing manager pattern with OOP structure
 
 ### Adding UI Components
@@ -96,7 +96,7 @@ Main initialization file that bootstraps the addon and sets up event handlers.
 Register event handlers using the EventManager:
 
 ```lua
-Bowbassigns.EventManager:RegisterHandler("EVENT_NAME", function(event, ...)
+BowbAssigns.EventManager:RegisterHandler("EVENT_NAME", function(event, ...)
     -- Your handler code
 end, "unique_key")
 ```
