@@ -44,6 +44,9 @@ function ImportModal:Create()
     frame:SetScript("OnDragStart", frame.StartMoving)
     frame:SetScript("OnDragStop", frame.StopMovingOrSizing)
     
+    -- Add to UISpecialFrames to enable ESC key closing
+    table.insert(UISpecialFrames, "BowbAssignsImportModal")
+    
     -- Title
     frame.title = frame:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
     frame.title:SetPoint("TOP", frame, "TOP", 0, -5)

@@ -46,6 +46,9 @@ function MainFrame:Create()
     frame:SetScript("OnDragStop", frame.StopMovingOrSizing)
     frame:SetFrameStrata("DIALOG")
     
+    -- Add to UISpecialFrames to enable ESC key closing
+    table.insert(UISpecialFrames, "BowbAssignsMainFrame")
+    
     -- Modern backdrop
     frame:SetBackdrop({
         bgFile = "Interface\\Buttons\\WHITE8X8",
