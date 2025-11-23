@@ -1,6 +1,6 @@
-# Bowbassigns
+# BowbAssigns
 
-A modular World of Warcraft addon with clean architecture.
+A comprehensive raid assignment manager for World of Warcraft (Mists of Pandaria), featuring a modern UI, flexible assignment management, and automated chat posting.
 
 ## Installation
 
@@ -23,21 +23,33 @@ A modular World of Warcraft addon with clean architecture.
 
 ### Main Features
 
-#### 1. Roster Import
-- Paste your Master Roster Map Export into the Roster tab
-- Format: `ROLE-PlayerName,ROLE-PlayerName,...`
-- Click "Import Roster" to load the data
+#### 1. Roster Management
+- Import Master Roster Map with class-colored player names
+- View and manage all players and their roles
+- Enable/disable individual players
+- Persistent across game sessions
 
-#### 2. Cooldown Assignments
-- Paste your HoF Cooldown Export into the Cooldowns tab
-- The addon will parse all boss assignments
-- Boss buttons will appear - click any boss to post assignments to raid chat
-- Use "Test Mode (Party)" checkbox to post to party chat instead
+#### 2. Assignment Management
+- Import HoF Cooldown Export for multiple raids (MSV, HoF, TOES, TOT, SOO)
+- Modern collapsible UI with alternating row colors
+- Enable/disable entire abilities or individual assignments
+- Disabled sections auto-collapse for cleaner view
+- Class-colored player names with spell links
+- Persistent enable/disable states across sessions
 
-#### 3. Pheromones Assignments
-- Paste player names (comma or newline separated) into the Pheromones tab
-- Click "Import Pheromones" to load the data
-- Click "Post to Chat" to send the assignments to raid/party chat
+#### 3. Pheromones Management (Garalon)
+- Dedicated pheromones order management view
+- Drag-and-drop reordering with up/down arrows
+- Type position numbers to quickly reorder
+- Remove players from rotation
+- Auto-saves order changes
+
+#### 4. Smart Chat Posting
+- Batched message sending (20 messages per batch with delays)
+- Rate-limited to avoid disconnects
+- Only posts enabled assignments
+- Grouped by ability and cast/health percentage
+- Formatted with spell links and timing information
 
 ## Architecture
 
@@ -94,6 +106,12 @@ end, "unique_key")
 - Keep files under 500 lines (strict limit)
 - Prefer breaking into smaller files at 400 lines
 - Each file should have a single, clear responsibility
+
+## Development
+
+### Releasing
+
+See [RELEASE.md](RELEASE.md) for instructions on creating releases and publishing to CurseForge.
 
 ## Version History
 
